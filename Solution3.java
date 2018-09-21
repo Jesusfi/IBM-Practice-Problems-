@@ -10,18 +10,21 @@ public class Solution3 {
 
     // Complete the twoStrings function below.
     static String twoStrings(String s1, String s2) {
-        
-        char stringOneChars [] = s1.toCharArray(); 
+        //Create a set of characters for a string 
         HashSet<Character> charSet = new HashSet<Character>();
         
+        //add the characters of one string to the set 
         for(int i = 0; i < s1.length(); i++){
             charSet.add(s1.charAt(i));
         }
+        //run though the second string and check if any characters in the set exist in it
         for(int j = 0; j < s2.length(); j++){
+            //if the string does contain the character then return "YES"
             if(charSet.contains(s2.charAt(j))){
                 return "YES";
             }
         }
+        //Return "NO"  
         return "NO";
 
     }
