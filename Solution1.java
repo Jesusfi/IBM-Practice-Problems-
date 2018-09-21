@@ -10,27 +10,33 @@ public class Solution1 {
 
     // Complete the rotLeft function below.
     static int[] rotLeft(int[] a, int d) {
+        //An array that will hold numbers that need to be shifted
         int [] sliceA = new int [d]; 
-        
+        //initialized a counter to keep track of the index of a seperate from the loop 
         int counter = 0; 
+        
+        //Go through array 'a' and decide in which array each number goes
         for(int i = 0; i < a.length; i++){
+            //if the number is in range of the ones to be rotated then place in into array 'sliceA' 
             if(i < d){
                 sliceA[i] = a[i];
-                System.out.println("added to SliceA: " + a[i]);
             }else{
+                //else update the front of array 'a' to hold that value 
                 a[counter] = a[i];
+                //increase the counter
                 counter++; 
-                System.out.println("add to newA: "+ a[i]); 
             }
             
         }
-        
+        //Go through array 'sliceA' and put the values back into array 'a'
         for(int k = 0; k < sliceA.length; k++){
-         a[counter] = sliceA[k]; 
+            //use the counter to find the position that where the values will be inputed 
+            a[counter] = sliceA[k]; 
+            //increase the counter
             counter++;  
         }
-        
-return a; 
+    //return the array 
+    return a; 
     }
 
     private static final Scanner scanner = new Scanner(System.in);
