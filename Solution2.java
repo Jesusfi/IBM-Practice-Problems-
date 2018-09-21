@@ -10,23 +10,32 @@ public class Solution2 {
 
     // Complete the matchingStrings function below.
     static int[] matchingStrings(String[] strings, String[] queries) {
+        //an array to keep track of the numbers of times each query is shown
         int countQueries []  = new int[queries.length];
+        //maps a string/query to the number of times it appears in the string array
         HashMap<String, Integer> stringCount= new HashMap<String, Integer>(); 
         
+        //go though the array of strings and add them to the hashmap 
         for(int i = 0; i < strings.length; i++){
+            //current string in the array
             String currentString = strings[i];
+            //determines if the key is already in the map then increases the counter for it 
             if(stringCount.containsKey(currentString)){
                 int tempCounter = stringCount.get(currentString);
                 tempCounter++; 
                 stringCount.put(currentString,tempCounter); 
             }else{
+                //else it adds that string to the map with the inital value of one 
                 stringCount.put(currentString,1);
             }
         }
+        //go through the array of queries and find the instances of it in the map along with the value 
         for(int j = 0; j < queries.length; j++){
+            //if it in the map - then add the value to the countqueries array 
             if(stringCount.containsKey(queries[j])){
                 countQueries[j] = stringCount.get(queries[j]);
             }else{
+                //if it does not appear in the map then set the value to zero 
                 countQueries[j] = 0; 
             }
         }
@@ -42,6 +51,7 @@ public class Solution2 {
 //         countQueries[i] = counter;  
         
 //     }
+        //return countQueries array 
         return countQueries;
 
     }
